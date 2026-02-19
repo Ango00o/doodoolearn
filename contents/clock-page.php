@@ -419,18 +419,17 @@ $current_stars = $row['total_stars'];
             const minutes = totalMinutes % 60;
 
             if (hours === targetHour && minutes === targetMin) {
+                celebrate();
                 // ถ้าถูก ยิงไปเก็บดาว
                 fetch('../services/add_star.php')
                     .then(response => response.text())
                     .then(data => {
-                        if (data === "Success") {
-                            celebrate();
-                            refreshMission(true); // เล่นเสียงและพลุ
-                            alert("เก่งมาก! รับดาวเพิ่ม 1 ดวง ⭐");
-                            //showStarAnimation();
-                            // อาจจะสุ่มโจทย์ใหม่ต่อเลย
+                        setTimeout(() => {
+                            alert("เก่งมากเลย! รับไปเลย 1 ดาว ⭐");
+                            refreshMission(true); // เปลี่ยนโจทย์ใหม่ทันทีหลังทำถูก
                             generateMission();
-                        }
+                        }, 2000);
+
                     });
             } else {
                 alert("ยังไม่ถูกนะ ลองดูเข็มสั้นเข็มยาวอีกทีครับ 🧐");

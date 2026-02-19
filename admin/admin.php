@@ -1,14 +1,16 @@
 <?php
-$conn = new mysqli("localhost", "root", "", "kids_learning");
-$conn->set_charset("utf8mb4");
+//$conn = new mysqli("localhost", "root", "", "kids_learning");
+//$conn->set_charset("utf8mb4");
+
+require_once '../includes/db_connect.php'; 
 
 if (isset($_POST['add_lesson'])) {
     $title = $_POST['title'];
     $category = $_POST['category'];
-    $link = $_POST['link'];
+    $link = addslashes("contents/" . $_POST['link']);//$_POST['link'];
     
     // จัดการการอัปโหลดไฟล์ภาพ (Asset Management)
-    $target_dir = "uploads/";
+    $target_dir = "../uploads/";
     if (!file_exists($target_dir)) { mkdir($target_dir, 0777, true); }
     
     $filename = time() . "_" . basename($_FILES["thumb"]["name"]);

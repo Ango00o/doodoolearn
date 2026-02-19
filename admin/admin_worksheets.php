@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>จัดการใบงาน - Admin</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <style>
         .admin-container { max-width: 1000px; margin: 20px auto; padding: 20px; font-family: sans-serif; }
         .upload-card { background: #fff; padding: 20px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-bottom: 30px; }
@@ -62,7 +62,7 @@
                         <td>{$row['title']}</td>
                         <td>{$row['created_at']}</td>
                         <td>
-                            <a href='delete_ws.php?id={$row['id']}' class='btn-delete' onclick='return confirm(\"ยืนยันการลบใบงานนี้?\")'>ลบ</a>
+                            <a href='admin_delete_ws.php?id={$row['id']}' class='btn-delete' onclick='return confirm(\"ยืนยันการลบใบงานนี้?\")'>ลบ</a>
                         </td>
                     </tr>";
                 }

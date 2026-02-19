@@ -1,7 +1,9 @@
 <?php
 // 1. เชื่อมต่อฐานข้อมูล
-$conn = new mysqli("localhost", "root", "", "kids_learning");
-$conn->set_charset("utf8mb4");
+//$conn = new mysqli("localhost", "root", "", "kids_learning");
+//$conn->set_charset("utf8mb4");
+
+require_once 'includes/db_connect.php'; 
 
 // 2. ระบบค้นหาแบบง่าย
 $search = isset($_GET['search']) ? $_GET['search'] : '';

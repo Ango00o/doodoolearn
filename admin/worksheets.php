@@ -1,6 +1,8 @@
 <?php
-$conn = new mysqli("localhost", "root", "", "kids_learning");
-$conn->set_charset("utf8mb4");
+//$conn = new mysqli("localhost", "root", "", "kids_learning");
+//$conn->set_charset("utf8mb4");
+
+require_once '../includes/db_connect.php';
 
 $sql = "SELECT * FROM worksheets ORDER BY id DESC";
 $result = $conn->query($sql);

@@ -1,9 +1,18 @@
 <?php
 // 1. ตั้งค่าการเชื่อมต่อฐานข้อมูล
-$servername = "localhost";
-$username = "root";      // ปกติ XAMPP ใช้ root
-$password = "";          // ปกติ XAMPP รหัสผ่านว่าง
-$dbname = "kids_learning";
+//Localhost
+// $servername = "localhost";
+// $username = "root";      // ปกติ XAMPP ใช้ root
+// $password = "";          // ปกติ XAMPP รหัสผ่านว่าง
+// $dbname = "kids_learning";
+
+
+// 1. ตั้งค่าการเชื่อมต่อฐานข้อมูล
+//Production Server
+$servername = "Production";
+$username = "u225725850_root";      // ปกติ XAMPP ใช้ root
+$password = "iE2/^tiB#9!j";          // ปกติ XAMPP รหัสผ่านว่าง
+$dbname = "u225725850_kids_learning";
 
 // 2. สร้างการเชื่อมต่อ
 $conn = new mysqli($servername, $username, $password, $dbname);

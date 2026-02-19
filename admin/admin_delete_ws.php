@@ -1,5 +1,5 @@
 <?php
-require_once 'db_connect.php';
+require_once '../includes/db_connect.php';
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -9,8 +9,8 @@ if (isset($_GET['id'])) {
     $data = $res->fetch_assoc();
 
     if ($data) {
-        unlink("uploads/previews/" . $data['preview_image']);
-        unlink("uploads/files/" . $data['file_path']);
+        unlink("../uploads/previews/" . $data['preview_image']);
+        unlink("../uploads/files/" . $data['file_path']);
     }
 
     // 2. ลบข้อมูลใน Database

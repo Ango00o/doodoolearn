@@ -1,6 +1,8 @@
 <?php
-$conn = new mysqli("localhost", "root", "", "kids_learning");
-$conn->set_charset("utf8mb4");
+//$conn = new mysqli("localhost", "root", "", "kids_learning");
+//$conn->set_charset("utf8mb4");
+
+require_once '../includes/db_connect.php'; 
 
 // ดึงบทความทั้งหมด
 $sql = "SELECT * FROM lessons ORDER BY id DESC";
@@ -40,7 +42,7 @@ $result = $conn->query($sql);
                 <td><?php echo $row['category']; ?></td>
                 <td>
                     <a href="edit-lesson.php?id=<?php echo $row['id']; ?>" class="btn-edit">แก้ไข</a>
-                    <a href="delete.php?id=<?php echo $row['id']; ?>" class="btn-delete" onclick="return confirm('แน่ใจนะว่าจะลบ?')">ลบ</a>
+                    <a href="admin_delete_lessons.php?id=<?php echo $row['id']; ?>" class="btn-delete" onclick="return confirm('แน่ใจนะว่าจะลบ?')">ลบ</a>
                 </td>
             </tr>
             <?php endwhile; ?>

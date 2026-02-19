@@ -1,6 +1,8 @@
 <?php
-$conn = new mysqli("localhost", "root", "", "kids_learning");
-$conn->set_charset("utf8mb4");
+//$conn = new mysqli("localhost", "root", "", "kids_learning");
+//$conn->set_charset("utf8mb4");
+
+require_once '../includes/db_connect.php'; 
 
 $id = $_GET['id'];
 $res = $conn->query("SELECT * FROM lessons WHERE id = $id");
@@ -9,7 +11,7 @@ $data = $res->fetch_assoc();
 if (isset($_POST['update_lesson'])) {
     $title = $_POST['title'];
     $category = $_POST['category'];
-    $link = $_POST['link'];
+    $link = addslashes($_POST['link']);//$_POST['link'];
     $description = $_POST['description'];
     
     // ตรวจสอบว่ามีการอัปโหลดรูปใหม่ไหม

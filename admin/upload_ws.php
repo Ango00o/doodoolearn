@@ -1,5 +1,5 @@
 <?php
-require_once 'db_connect.php';
+require_once '../includes/db_connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $title = $_POST['title'];
@@ -9,12 +9,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $file_name = time() . "_" . $_FILES['file_path']['name'];
 
     // ตำแหน่งจัดเก็บ
-    $target_preview = "uploads/previews/" . $preview_name;
-    $target_file = "uploads/files/" . $file_name;
+    $target_preview = "../uploads/previews/" . $preview_name;
+    $target_file = "../uploads/files/" . $file_name;
 
     // ตรวจสอบและสร้างโฟลเดอร์ถ้ายังไม่มี
-    if (!is_dir('uploads/previews')) mkdir('uploads/previews', 0777, true);
-    if (!is_dir('uploads/files')) mkdir('uploads/files', 0777, true);
+    if (!is_dir('../uploads/previews')) mkdir('../uploads/previews', 0777, true);
+    if (!is_dir('../uploads/files')) mkdir('../uploads/files', 0777, true);
 
     // อัปโหลดไฟล์
     if (move_uploaded_file($_FILES['preview_image']['tmp_name'], $target_preview) && 
