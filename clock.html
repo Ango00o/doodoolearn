@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>หนูน้อยเก่งนาฬิกา ⏰</title>
+    <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ff6b6b;
+            --secondary-color: #4ecdc4;
+            --bg-color: #f7f9fc;
+            --clock-color: #ffffff;
+        }
+
+        body {
+            font-family: 'Itim', cursive;
+            background-color: var(--bg-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            color: #333;
+        }
+
+        h1 { color: var(--primary-color); font-size: 2.5rem; margin-bottom: 10px; }
+        p { font-size: 1.2rem; }
+
+        /* สไตล์ของนาฬิกา */
+        .clock-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            background: var(--clock-color);
+            border: 15px solid var(--secondary-color);
+            border-radius: 50%;
+            margin: 30px auto;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .center-dot {
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 15px; height: 15px;
+            background: #333;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+        }
+
+        .hand {
+            position: absolute;
+            bottom: 50%; left: 50%;
+            transform-origin: bottom;
+            border-radius: 10px;
+            transition: transform 0.1s ease-in-out;
+        }
+
+        .hour-hand { width: 8px; height: 70px; background: #333; z-index: 5; }
+        .min-hand { width: 5px; height: 100px; background: var(--primary-color); z-index: 4; }
+
+        /* ตัวเลขนาฬิกา */
+        .number {
+            position: absolute;
+            width: 100%; height: 100%;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        /* ส่วนแสดงผลความรู้ */
+        .display-card {
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+            margin-top: 20px;
+        }
+
+        .time-text { font-size: 2rem; color: var(--primary-color); margin: 10px 0; }
+        .thai-call { font-size: 1.8rem; color: #2d3436; background: #fff3cd; padding: 10px; border-radius: 10px; }
+
+        input[type=range] { width: 80%; margin: 20px 0; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <h1>นาฬิกาพาเพลิน ⏰</h1>
+    <p>ลองเลื่อนแถบสีส้มด้านล่างเพื่อเปลี่ยนเวลานะ!</p>
+
+    <div class="clock-container">
+        <div class="center-dot"></div>
+        <div class="hand hour-hand" id="hourHand"></div>
+        <div class="hand min-hand" id="minHand"></div>
+        <div id="numbers"></div>
+    </div>
+
+    <input type="range" id="timeSlider" min="0" max="1439" value="600">
+
+    <div class="display-card">
+        <div class="time-text" id="digitalTime">10:00</div>
+        <div class="thai-call" id="thaiCall">สิบโมงเช้า</div>
+    </div>
+
+    <script>
+        const hourHand = document.getElementById('hourHand');
+        const minHand = document.getElementById('minHand');
+        const timeSlider = document.getElementById('timeSlider');
+        const digitalTime = document.getElementById('digitalTime');
+        const thaiCall = document.getElementById('thaiCall');
+
+        // สร้างตัวเลขบนหน้าปัด
+        const numbersContainer = document.getElementById('numbers');
+        for (let i = 1; i <= 12; i++) {
+            const numDiv = document.createElement('div');
+            numDiv.className = 'number';
+            numDiv.style.transform = `rotate(${i * 30}deg)`;
+            numDiv.innerHTML = `<span style="display:inline-block; transform:rotate(-${i * 30}deg)">${i}</span>`;
+            numbersContainer.appendChild(numDiv);
+        }
+
+        function updateClock() {
+            const totalMinutes = parseInt(timeSlider.value);
+            const hours = Math.floor(totalMinutes / 60);
+            const minutes = totalMinutes % 60;
+
+            // หมุนเข็ม
+            const hourDeg = (hours * 30) + (minutes * 0.5);
+            const minDeg = minutes * 6;
+            hourHand.style.transform = `translateX(-50%) rotate(${hourDeg}deg)`;
+            minHand.style.transform = `translateX(-50%) rotate(${minDeg}deg)`;
+
+            // แสดงเวลาดิจิทัล
+            const displayH = hours.toString().padStart(2, '0');
+            const displayM = minutes.toString().padStart(2, '0');
+            digitalTime.innerText = `${displayH}:${displayM}`;
+
+            // แปลงเป็นภาษาพูดไทย
+            thaiCall.innerText = getThaiTime(hours, minutes);
+        }
+
+        function getThaiTime(h, m) {
+            let suffix = m > 0 ? ` ${m} นาที` : "";
+            
+            if (h === 0) return "เที่ยงคืน" + suffix;
+            if (h >= 1 && h <= 5) return "ตี " + h + suffix;
+            if (h === 6) return "หกโมงเช้า" + suffix;
+            if (h >= 7 && h <= 11) return (h - 6) + " โมงเช้า" + suffix;
+            if (h === 12) return "เที่ยงวัน" + suffix;
+            if (h >= 13 && h <= 15) return "บ่าย " + (h - 12) + " โมง" + suffix;
+            if (h >= 16 && h <= 18) return (h - 12) + " โมงเย็น" + suffix;
+            if (h >= 19 && h <= 23) return (h - 18) + " ทุ่ม" + suffix;
+            return "";
+        }
+
+        timeSlider.addEventListener('input', updateClock);
+        updateClock(); // วิ่งครั้งแรก
+    </script>
+</body>
+</html>

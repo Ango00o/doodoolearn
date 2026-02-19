@@ -1,0 +1,105 @@
+/* style.css */
+:root {
+    --bg-light: #e0f7fa;
+    --primary-orange: #d35400;
+    --card-red: #ff7675;
+    --card-blue: #74b9ff;
+    --card-yellow: #ffeaa7;
+    --card-purple: #a29bfe;
+    --text-dark: #2c3e50;
+}
+
+body {
+    font-family: 'Itim', cursive;
+    background: linear-gradient(180deg, #a3e4f7 0%, var(--bg-light) 100%);
+    margin: 0; padding: 0;
+    min-height: 100vh;
+}
+
+/* Header Section */
+.main-header {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.owl-mascot { width: 100px; margin-bottom: 10px; }
+.brand-name { 
+    font-size: 4rem; color: var(--primary-orange); 
+    margin: 0; text-shadow: 3px 3px 0px white;
+}
+.tagline { font-size: 1.8rem; color: #555; margin-top: 5px; }
+
+/* Search Bar - ปรับให้เหมือนในรูป */
+.search-container {
+    background: white;
+    max-width: 600px;
+    margin: 20px auto 50px;
+    padding: 12px 25px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border: 3px solid #f1f1f1;
+}
+
+.search-container input {
+    border: none; outline: none; width: 100%;
+    font-size: 1.3rem; font-family: 'Itim';
+    padding-left: 15px; color: #666;
+}
+
+/* Grid Layout */
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Card Styling - เน้นโค้งมนและมีขอบขาว */
+.lesson-card {
+    border-radius: 35px;
+    padding: 30px;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 6px solid rgba(255,255,255,0.6);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 320px;
+}
+
+.lesson-card:hover { transform: translateY(-12px); box-shadow: 0 20px 45px rgba(0,0,0,0.15); }
+
+.card-icon-box img {
+    width: 140px; height: 140px;
+    object-fit: contain;
+    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));
+}
+
+.lesson-card h3 { font-size: 1.8rem; margin: 15px 0; }
+
+.btn-play {
+    background: #2ecc71; color: white;
+    padding: 10px 30px; border-radius: 20px;
+    font-size: 1.2rem; font-weight: bold;
+    display: inline-block; box-shadow: 0 4px 0 #27ae60;
+}
+
+/* Color Classes */
+.card-red { background-color: var(--card-red); color: white; }
+.card-blue { background-color: var(--card-blue); color: white; }
+.card-yellow { background-color: var(--card-yellow); color: #d35400; }
+.card-purple { background-color: var(--card-purple); color: white; }
+
+/* Settings Button */
+.btn-settings {
+    position: fixed; top: 20px; right: 20px;
+    background: white; border-radius: 50px; padding: 10px 20px;
+    text-decoration: none; color: #666; font-size: 1rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
