@@ -1,6 +1,8 @@
 "# doodoolearn" 
+-------------------------------
 "# IDea of project Funny + Learning "
+-------------------------------
 "# Programming language PHP + MySQL"
 "# Source code : https://github.com/Ango00o/doodoolearn "
-"# Deploy on "
-"Demo URL : "
+-------------------------------
+"Demo URL : https://doodoolearn.com"
