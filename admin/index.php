@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,25 +14,38 @@
             --bg: #fffaf0;
         }
 
-        body { 
-            font-family: 'Itim', cursive; 
-            background: var(--bg); 
-            margin: 0; padding: 0; 
+        body {
+            font-family: 'Itim', cursive;
+            background: var(--bg);
+            margin: 0;
+            padding: 0;
         }
 
-        .container { max-width: 900px; margin: 40px auto; padding: 20px; }
-        
-        .header { 
-            text-align: center; 
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
             margin-bottom: 40px;
             padding: 30px;
             background: white;
             border-radius: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
         }
-        
-        .header h1 { color: var(--primary); margin: 0; font-size: 2.5rem; }
-        .header p { color: #666; font-size: 1.2rem; }
+
+        .header h1 {
+            color: var(--primary);
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 1.2rem;
+        }
 
         .section-title {
             margin: 30px 0 15px 10px;
@@ -41,36 +55,48 @@
             padding-left: 15px;
         }
 
-        .menu-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-            gap: 20px; 
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
         }
 
         .menu-item {
-            background: white; 
-            padding: 25px; 
+            background: white;
+            padding: 25px;
             border-radius: 20px;
-            text-align: center; 
+            text-align: center;
             border: 2px solid transparent;
-            text-decoration: none; 
-            color: #333; 
+            text-decoration: none;
+            color: #333;
             transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        .menu-item:hover { 
+        .menu-item:hover {
             transform: translateY(-10px);
             border-color: var(--primary);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
 
-        .icon { font-size: 3.5rem; margin-bottom: 15px; }
-        .menu-item h3 { margin: 10px 0 5px 0; color: #2c3e50; }
-        .menu-item p { margin: 0; color: #7f8c8d; font-size: 0.95rem; }
+        .icon {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+        }
+
+        .menu-item h3 {
+            margin: 10px 0 5px 0;
+            color: #2c3e50;
+        }
+
+        .menu-item p {
+            margin: 0;
+            color: #7f8c8d;
+            font-size: 0.95rem;
+        }
 
         .btn-back {
             display: inline-block;
@@ -80,7 +106,10 @@
             font-weight: bold;
             font-size: 1.1rem;
         }
-        .btn-back:hover { text-decoration: underline; }
+
+        .btn-back:hover {
+            text-decoration: underline;
+        }
 
         /* Badge สำหรับบอกจำนวน (สมมติ) */
         .badge {
@@ -93,13 +122,19 @@
         }
     </style>
 </head>
+
 <body>
 
-<div style="text-align: center; margin-bottom: 20px;">
-    <a href="../" style="background: #2ecc71; color: white; padding: 12px 25px; border-radius: 50px; text-decoration: none; display: inline-block; font-weight: bold;">
-        ⬅️ ออกจากโหมดผู้ปกครอง (ไปหน้าเด็กเรียน)
-    </a>
-</div>
+    <div style="text-align: center; margin-bottom: 20px;">
+        <a href="../"
+            style="background: #2ecc71; color: white; padding: 12px 25px; border-radius: 50px; text-decoration: none; display: inline-block; font-weight: bold;">
+            ⬅️ ออกจากโหมดผู้ปกครอง (ไปหน้าเด็กเรียน)
+        </a>
+        <a href="../services/restore_data.php"
+            style="background: #4ecdc4; color: white; padding: 12px 25px; border-radius: 50px; text-decoration: none; display: inline-block; font-weight: bold;">
+            🔄 ตั้งค่าจำลองข้อมูล (Reset)
+        </a>
+    </div>
 
     <div class="container">
         <div class="header">
@@ -135,7 +170,7 @@
                 <h3>แก้ไข คลังใบงาน</h3>
                 <p>จัดการไฟล์ PDF สำหรับดาวน์โหลด</p>
             </a>
-            
+
             <a href="admin_stats.php" class="menu-item">
                 <span class="icon">📈</span>
                 <h3>สถิติการเรียน</h3>
@@ -143,10 +178,44 @@
             </a>
         </div>
 
-        <div style="text-align: center;">
-            <a href="../" class="btn-back">← กลับไปหน้าหลัก (สำหรับเด็กๆ)</a>
-        </div>
+
+    </div>
     </div>
 
+
+    <div style="text-align: center;">
+        <a href="../" class="btn-back">← กลับไปหน้าหลัก (สำหรับเด็กๆ)</a>
+    </div>
+    </div>
+
+    <script>
+        function RestoreData() {
+            // ถามเพื่อความแน่ใจก่อนรีเซ็ต
+            if (!confirm("คุณต้องการรีเซ็ตข้อมูลดาวทั้งหมดใช่หรือไม่?")) {
+                return;
+            }
+
+            // เล่นเสียงคลิก (ถ้ามี)
+            if (sounds.click) sounds.click.play().catch(e => { });
+
+            // ส่งคำสั่งไปที่ PHP
+            fetch('services/restore_data.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        alert(data.message);
+                        // โหลดหน้าใหม่เพื่อให้ตัวเลขดาวในเมนูอัปเดต
+                        location.reload();
+                    } else {
+                        alert("เกิดข้อผิดพลาด: " + data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert("ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ได้");
+                });
+        }
+    </script>
 </body>
+
 </html>
